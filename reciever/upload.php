@@ -5,7 +5,7 @@ ini_set('display_startup_errors',1);
 ini_set('always_populate_raw_post_data',true);
 error_reporting(-1);
 
-require_once("db.inc.php");
+require_once("../db.inc.php");
 
 
 // From http://stackoverflow.com/questions/444966/working-with-ipv6-addresses-in-php
@@ -27,7 +27,7 @@ function lastIPv6Group($ipv6) {
 
 //echo $_GET["ip"];
 
-$mysqli = new mysqli($__HOST, $__USERNAME, $__PASSWORD, "feshie");
+$mysqli = new mysqli($__HOST, $__USERNAME, $__PASSWORD, $__DATABASE);
 
 if($mysqli->connect_errno) {
         header("HTTP/1.0 501");

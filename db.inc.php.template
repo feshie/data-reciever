@@ -3,5 +3,5 @@
 $__HOST = "";
 $__USERNAME = "";
 $__PASSWORD = "";
-
+$__DATABASE = "";
 ?>

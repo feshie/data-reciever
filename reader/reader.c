@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     pb_decode_delimited(&istream, Sample_fields, &sample);
 
     /*##### TIME ##########################################################################*/
-    printf("\tTime: %lu\n", sample.time);
+    printf("\tTime: %d\n", sample.time);
     /*##### BATTERY #######################################################################*/
     printf("\tBatt: %f\n", sample.batt);
     /*##### TEMPERATURE ###################################################################*/
