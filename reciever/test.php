@@ -4,9 +4,9 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 
-require_once("db.inc.php");
+require_once("../db.inc.php");
 
-$mysqli = new mysqli($__HOST, $__USERNAME, $__PASSWORD, "feshie");
+$mysqli = new mysqli($__HOST, $__USERNAME, $__PASSWORD, $__DATABASE);
 
 $query = "SELECT * FROM `unprocessed_data` WHERE `id`='0fda'";
 
