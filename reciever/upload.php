@@ -47,7 +47,7 @@ $contents = file_get_contents('php://input');//$HTTP_RAW_POST_DATA;
 
 $stmt = $mysqli->prepare(
         "INSERT INTO `unprocessed_data`
-        (`ID`, `timestamp`, `data`)
+        (`device_id`, `timestamp`, `data`)
         VALUES (?, FROM_UNIXTIME(?), ?)");
 
 $stmt->bind_param("sis", $id, $timestamp, $contents);

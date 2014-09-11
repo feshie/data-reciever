@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 'SELECT ID, timestamp, HEX(data) FROM feshie.unprocessed_data' |
+echo 'SELECT device_id, timestamp, HEX(data) FROM feshie.unprocessed_data' |
   mysql -udjap1g11 -papplebanana --skip-column-names |
   while read row
   do
