@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo 'SELECT device_id, timestamp, HEX(data) FROM feshie.unprocessed_data' |
-  mysql -udjap1g11 -papplebanana --skip-column-names |
+echo 'SELECT * FROM `unprocessed_data` WHERE id > ( (SELECT MAX(id) FROM unprocessed_data ) -10)' |
+  mysql -udjap1g11 -papplebanana --skip-column-names feshie |
   while read row
   do
     id=`echo $row | cut -f 1 -d" "`
