@@ -45,7 +45,18 @@ int main(int argc, char *argv[])
       printf("\tPitch = %f\n", pitch);
       printf("\tRoll  = %f\n", roll);
     }
+    
+    if(sample.has_ADC1){
+        printf("\tADC1 = %d\n", (uint32_t)sample.ADC1);
+    }
 
+    if(sample.has_ADC2){
+        printf("\tADC2 = %d\n", (uint32_t)sample.ADC2);
+    }
+
+    if(sample.has_rain){
+        printf("\t Rain = %d\n", (uint32_t)sample.rain);
+    }
   }
   else
   {
