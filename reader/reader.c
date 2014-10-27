@@ -41,7 +41,9 @@ int main(int argc, char *argv[])
 
       double pitch = atan2(Y, Z) * 180/PI;
       double roll = atan2(X, sqrt(Y*Y + Z*Z)) * 180/PI;
-
+      printf("\tX = %d\n", sample.accX);
+     printf("\tY = %d\n", sample.accY);
+      printf("\tZ = %d\n", sample.accZ);
       printf("\tPitch = %f\n", pitch);
       printf("\tRoll  = %f\n", roll);
     }
