@@ -1,9 +1,7 @@
 #include "pb_decode.h"
 #include "pb_encode.h"
-#include "pb_encode.c"
-#include "pb_decode.c"
 #include "readings.pb.h"
-#include "readings.pb.c"
+#include "rs485_message.pb.h"
 #include <stdio.h>
 #include <math.h>
 
