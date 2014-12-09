@@ -66,33 +66,37 @@ int main(int argc, char *argv[]){
         if(sample.has_AVR){
             avr_bytes = (uint8_t)sample.AVR.size;
             printf("\tHas %d bytes of AVR data\n", avr_bytes);
-            printf("\t");
+/*            printf("\t");
             for(i = 0; i < avr_bytes; i++){
                 printf("%d,",sample.AVR.bytes[i]);
             }
-            printf("\n");
+            printf("\n"); */
             memcpy(avr_data, sample.AVR.bytes, avr_bytes);
             avr_istream = pb_istream_from_buffer(avr_data, avr_bytes);
             pb_decode(&avr_istream, Rs485_fields, &rs485);
-            printf("\tType = %d\n", rs485.type);
+/*            printf("\tType = %d\n", rs485.type);
             printf("\tSensor = %d\n", rs485.sensor); 
             printf("\tOW count = %d\n", (uint8_t)rs485.ow_count);
             printf("\tAD count = %d\n", (uint8_t)rs485.ad_count);
-            printf("\tTAD count = %d\n", (uint8_t)rs485.tad_count);
+            printf("\tTAD count = %d\n", (uint8_t)rs485.tad_count);*/
             if(rs485.type == Rs485_Type_DATA){
                 if(rs485.has_sensor){
                     if(rs485.sensor == Rs485_Sensor_OW){
-                        printf("\tOne wire data\n");
                         printf("\t%d items of one wire data\n", (uint8_t)rs485.ow_count);
                         for(i=0; i< (uint8_t)rs485.ow_count; i++){
                             printf("\t%d:%f\n",rs485.ow[i].id, rs485.ow[i].value);
                         }
                     }else if(rs485.sensor == Rs485_Sensor_TA_CHAIN){
-                        printf("\tChain data\n");
-                        printf("TO IMPLEMENT\n");
+                        printf("\t%d items of chain data\n", (uint8_t)rs485.tad_count);
+                        for(i=0; i< (uint8_t)rs485.tad_count; i++){
+                            printf("\t%d:%f:%f:%f\n",rs485.tad[i].id, rs485.tad[i].pitch, rs485.tad[i].roll, rs485.tad[i].temp);
+                        }
                     }else if(rs485.sensor == Rs485_Sensor_WP){
                         printf("\tWater pressure\n");
-                        printf("TO IMPLEMENT\n");
+                        printf("\t%d items of water pressure data\n", (uint8_t)rs485.ad_count);
+                        for(i=0; i< (uint8_t)rs485.ad_count; i++){
+                            printf("\t%d:%f\n",rs485.ad[i].adc, rs485.ow[i].value);
+                        }
                     }else if(rs485.sensor == Rs485_Sensor_GAS){
                         printf("\tGas sensor\n");
                         printf("TO IMPLEMENT\n");
