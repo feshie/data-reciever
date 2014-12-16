@@ -16,6 +16,6 @@ echo 'SELECT device_id, timestamp, HEX(data)  FROM `unprocessed_data` WHERE id >
     echo -n $data | xxd -r -p - $filename
 
     ./reader $filename
-
+    rm $filename
     echo "-------------------------------------"
   done
