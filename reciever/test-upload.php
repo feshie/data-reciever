@@ -5,7 +5,7 @@ ini_set('display_startup_errors',1);
 ini_set('always_populate_raw_post_data',true);
 error_reporting(-1);
 
-require_once("../db.inc.php");
+require_once("../db-test.inc.php");
 
 
 // From http://stackoverflow.com/questions/444966/working-with-ipv6-addresses-in-php
@@ -46,7 +46,7 @@ $timestamp = time();
 $contents = file_get_contents('php://input');//$HTTP_RAW_POST_DATA;
 
 $stmt = $mysqli->prepare(
-        "INSERT INTO `test_unprocessed_data`
+        "INSERT INTO `unprocessed_data`
         (`device_id`, `timestamp`, `data`)
         VALUES (?, FROM_UNIXTIME(?), ?)");
 
