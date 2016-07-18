@@ -55,8 +55,15 @@ $stmt = $mysqli->prepare(
         VALUES (?, FROM_UNIXTIME(?), ?)");
 
 $stmt->bind_param("sis", $id, $timestamp, $contents);
-$stmt->execute();
+if($stmt->execute() === TRUE){
+	header("HTTP/1.0 200");
+	echo "SUCCESS";
+}else{
+	header("HTTP/1.0 500");
+	echo "Query failure";
+};
 $stmt->close();
+exit();
 
 ?>
 
