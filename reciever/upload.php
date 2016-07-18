@@ -22,6 +22,10 @@ function lastIPv6Group($ipv6) {
                 return false;
         $ipv6_long = ExpandIPv6Notation($ipv6);
         $tokens = explode(":", $ipv6_long);
+        $ip_str = "";
+        for($i = 4; $i < 8; $i++){ //We want the last 4 sections of the IP address
+            $ip_str .= str_pad($tokens[$i], 4, "0", STR_PAD_LEFT);
+        }
         return str_pad($tokens[7], 4, "0", STR_PAD_LEFT);
 }
 
