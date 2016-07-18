@@ -26,7 +26,9 @@ function lastIPv6Group($ipv6) {
         for($i = 4; $i < 8; $i++){ //We want the last 4 sections of the IP address
             $ip_str .= str_pad($tokens[$i], 4, "0", STR_PAD_LEFT);
         }
-        return str_pad($tokens[7], 4, "0", STR_PAD_LEFT);
+	error_log("IP = ".$ip_str);
+	return $ip_str;
+#        return str_pad($tokens[7], 4, "0", STR_PAD_LEFT);
 }
 
 //echo $_GET["ip"];
@@ -61,7 +63,8 @@ if($stmt->execute() === TRUE){
 }else{
 	header("HTTP/1.0 500");
 	echo "Query failure";
-};
+	error_log($stmt->error);
+}
 $stmt->close();
 exit();
 
